@@ -1,0 +1,24 @@
+.breed-select {
+  display: flex;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  color: rgb(255, 0, 0);
+  animation: 1s ease;
+}
+
+.cat-info {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  max-width: 900px;
+  padding: 50px 50px;
+  margin: 20px auto 0 auto;
+  animation: 1s ease;
+}
