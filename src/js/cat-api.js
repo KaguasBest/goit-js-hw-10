@@ -1,9 +1,15 @@
 import axios from 'axios';
 import { Notify } from 'notiflix';
+import { refs } from './common';
 
 axios.defaults.baseURL = 'https://api.thecatapi.com/v1';
 axios.defaults.headers.common['x-api-key'] =
   'live_FwFcrkdBsdS2MilHjk5zmoEgROrQPJZHID8jpTxxTjtXOCJGsGG8CoYFKJGQoOdB';
+
+Notify.init({
+  position: 'center-top',
+});
+refs.breedSelect.classList.add('hidden');
 
 function errMsg() {
   Notify.failure(`Oops! Something went wrong! Try reloading the page!`, {

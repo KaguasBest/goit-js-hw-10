@@ -13,12 +13,34 @@
   animation: 1s ease;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: black;
+  transform: translate(-50%, -50%) scale(1);
+}
+
 .cat-info {
   display: flex;
+  flex-direction: row;
   gap: 40px;
   width: 100%;
   max-width: 900px;
   padding: 50px 50px;
   margin: 20px auto 0 auto;
   animation: 1s ease;
+}
+
+.cat-photo {
+  width: 400px;
+  height: auto;
+}
+
+.breed-name {
+  margin-top: 0;
 }
