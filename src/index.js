@@ -1,10 +1,10 @@
 import { refs } from './js/common';
-import { errMsg, fetchBreeds, fetchCatByBreed } from './js/cat-api';
+import { errMsg, fetchBreeds } from './js/cat-api';
 import SlimSelect from 'slim-select';
+import { onSelect } from './js/select-cat';
 
 // Import slim-select style
 import 'slim-select/dist/slimselect.css';
-import { onSelect } from './js/select-cat';
 
 refs.error.classList.add('hidden');
 refs.breedSelect.classList.add('hidden');
@@ -23,7 +23,7 @@ fetchBreeds()
       })
   )
   .catch(() => {
-    errMsg;
+    errMsg();
   })
   .finally(() => {
     refs.loader.classList.add('hidden');

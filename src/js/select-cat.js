@@ -1,10 +1,11 @@
-import { fetchCatByBreed } from './cat-api';
+import { errMsg, fetchCatByBreed } from './cat-api';
 import { createCatInfo } from './cats-card';
 import { refs } from './common';
 
 export function onSelect(evt) {
   const selectBreedId = evt.currentTarget.value;
-  refs.catInfo.disabled = false;
+  refs.catInfo.textContent = '';
+  refs.loader.classList.remove('hidden');
 
   fetchCatByBreed(selectBreedId)
     .then(data => {
@@ -12,6 +13,7 @@ export function onSelect(evt) {
       refs.catInfo.disabled = true;
     })
     .catch(() => {
+      refs.catInfo.textContent = '';
       errMsg();
     })
     .finally(() => {

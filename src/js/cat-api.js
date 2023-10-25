@@ -1,9 +1,9 @@
-import axios from 'axios';
+// import axios from 'axios';
 import { Notify } from 'notiflix';
 import { refs } from './common';
 
-axios.defaults.baseURL = 'https://api.thecatapi.com/v1';
-axios.defaults.headers.common['x-api-key'] =
+const URL = 'https://api.thecatapi.com/v1';
+const API_KEY =
   'live_FwFcrkdBsdS2MilHjk5zmoEgROrQPJZHID8jpTxxTjtXOCJGsGG8CoYFKJGQoOdB';
 
 Notify.init({
@@ -13,30 +13,28 @@ refs.breedSelect.classList.add('hidden');
 
 function errMsg() {
   Notify.failure(`Oops! Something went wrong! Try reloading the page!`, {
-    timeout: 4000,
+    timeout: 3000,
   });
 }
 
 function fetchBreeds() {
-  return axios
-    .get('/breeds')
-    .then(responce => {
-      return responce.data;
-    })
-    .catch(() => {
-      errMsg();
-    });
+  return fetch(`${URL}/breeds?api_key=${API_KEY}`).then(response => {
+    if (!response.ok) {
+      throw new Error(response.statusText || response.status);
+    }
+    return response.json();
+  });
 }
 
 function fetchCatByBreed(breedId) {
-  return axios
-    .get(`/images/search?breed_ids=${breedId}`)
-    .then(responce => {
-      return responce.data;
-    })
-    .catch(() => {
-      errMsg();
-    });
+  return fetch(
+    `${URL}/images/search?breed_ids=${breedId}&api_key=${API_KEY}`
+  ).then(response => {
+    if (!response.ok) {
+      throw new Error(response.statusText || response.status);
+    }
+    return response.json();
+  });
 }
 
 export { fetchBreeds, fetchCatByBreed, errMsg };
